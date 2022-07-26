@@ -1,0 +1,12 @@
+.App{
+  color: white;
+  align-content: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+body {
+  background-color: #000;
+  color: white;
+}

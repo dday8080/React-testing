@@ -10,3 +10,6 @@ body {
   background-color: #000;
   color: white;
 }
+.avatar {
+  border-radius: 20%;
+}

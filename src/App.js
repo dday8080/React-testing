@@ -150,8 +150,8 @@ function App() {
         <Header />
         <div>
             <br/>
-            <MyButton count={count} onClick={handleClick} />
             <Avatar /><br/><br/>
+            <MyButton count={count} onClick={handleClick} />
             <FilterableProductTable products={PRODUCTS} />
             {/*<Products />*/}
             {/*<MyButton count={count} onClick={handleClick} />*/}
@@ -162,7 +162,9 @@ function App() {
 
 }
 
+export default function boobies() {
 
+}
 export default App;
 
 function Avatar() {

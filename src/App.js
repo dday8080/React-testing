@@ -162,9 +162,9 @@ function App() {
 
 }
 
-export default function boobies() {
 
-}
+
+
 export default App;
 
 function Avatar() {

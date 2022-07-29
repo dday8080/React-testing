@@ -2,6 +2,7 @@
 import './App.css';
 import {useState} from "react";
 import FilterableP from "./FilterableP";
+import {Welcome} from "./FilterableP";
 let cc = console.log
 
 
@@ -38,6 +39,7 @@ function App() {
             <Header/>
             <div>
                 <br/>
+                <Welcome />
                 <Avatar/><br/><br/>
                 <MyButton count={count} onClick={handleClick}/>
                 <FilterableP/>

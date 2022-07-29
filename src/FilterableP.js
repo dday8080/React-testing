@@ -1,6 +1,16 @@
 import {useState} from "react";
 let cc = console.log;
 
+export function Welcome(){
+    function onclick(){
+        return  alert("Welcome!!! Isn't alert so annoying? lol");
+    }
+    return(
+    <div>
+        <button onClick={onclick}>Welcome</button>
+    </div>
+    )
+}
 
 const PRODUCTS = [
     {category: 'Fruits', price: '$1', stocked: true, name: 'Apple'},

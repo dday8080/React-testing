@@ -13,3 +13,19 @@ body {
 .avatar {
   border-radius: 20%;
 }
+.navBarUl{
+
+  list-style-type: none;
+  margin: 0;
+  flex-direction: row;
+  color: darkgray;
+  padding: 12px;
+  overflow: hidden;
+}
+.navBarLiA{
+  float: left;
+  color: white;
+  text-align: center;
+  padding: 10px 15px 15px 10px;
+  font-size: 20px;
+}

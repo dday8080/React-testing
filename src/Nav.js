@@ -1,12 +1,42 @@
 import "./App.css"
 
-export function Welcome(){
-    function onclick(){
-        return  alert("welcome to bad alert is annoying");
-    }
+const navName = {
+    Project1: "Wage Calculator",
+        a:"wageCalculator.html",
+   };
+
+function NavBarLi(){
+
+    return(
+    <li><a
+            href={navName.a}
+            target="self"
+            className='navBarLiA'>
+
+            {navName.Project1}
+        </a>
+    </li>
+    )
+}
+
+function NavBarUl(){
     return(
         <div>
-            <button onClick={onclick}>Welcome</button>
+            <ul className="navBarUl">
+                <NavBarLi />
+                <NavBarLi />
+                <NavBarLi />
+            </ul>
         </div>
     )
+}
+
+export default function Nav (){
+    return(
+        <div>
+            <NavBarUl />
+        </div>
+
+    )
+
 }

@@ -1,10 +1,12 @@
 
+import {link} from "react-router-dom";
 import './App.css';
 import {useState} from "react";
 import FilterableP from "./FilterableP";
 import {Welcome} from "./FilterableP";
 import {Avatar} from "./FilterableP";
-import Nav from "./Nav";
+import Nav from "./routes/Nav";
+
 let cc = console.log
 
 
@@ -18,20 +20,7 @@ function MyButton({count, onClick}) {
         </button>
     );
 }
-function Header() {
-    return (
-        <header>
-            <img
-            src="https://cdn.pixabay.com/photo/2016/10/20/18/35/earth-1756274__480.jpg"
-            height={50}
-            width={1900}
-            alt="neat logo"
-           />
-            <span> <br/> Welcome to my new React Sampling!</span><br/><br/>
-            <span> Welcome to the Danger Zone</span><br/>
-        </header>
-    );
-}
+
 
 
 function App() {
@@ -44,9 +33,13 @@ function App() {
     return (
 
         <div className="App">
-            <Header/>
+
             <div>
-                <Nav/>
+                <nav>
+                    {/*<link to="/">Expenses</link> |{" "}*/}
+                    <Nav/>
+
+                </nav>
                 <br/>
                 <Welcome />
                 <Avatar/><br/><br/>
@@ -56,6 +49,7 @@ function App() {
                 {/*<MyButton count={count} onClick={handleClick} />*/}
 
             </div>
+            {/*<Outlet/>*/}
         </div>
     );
 

@@ -14,15 +14,17 @@ body {
   border-radius: 20%;
 }
 .navBarUl{
-
+  justify-content: center;
+  display: flex;
   list-style-type: none;
-  margin: 0;
+  margin: 2% ;
   flex-direction: row;
-  color: darkgray;
-  padding: 12px;
+  background-color: darkslategrey;
+  padding: 3px%;
   overflow: hidden;
 }
 .navBarLiA{
+  text-underline: none;
   float: left;
   color: white;
   text-align: center;

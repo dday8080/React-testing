@@ -8,7 +8,7 @@ import Expenses from "./expenses";
 
 function Header() {
     return (
-        <header>
+        <header className="App">
             <img
                 src="https://cdn.pixabay.com/photo/2016/10/20/18/35/earth-1756274__480.jpg"
                 height={50}

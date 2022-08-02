@@ -24,10 +24,16 @@ body {
   overflow: hidden;
 }
 .navBarLiA{
-  text-underline: none;
+  text-decoration: none;
   float: left;
   color: white;
   text-align: center;
   padding: 10px 15px 15px 10px;
   font-size: 20px;
+}
+
+.linkStyle{
+  text-decoration: none;
+  color: white;
+  padding: 4px;
 }

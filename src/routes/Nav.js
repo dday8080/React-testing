@@ -1,9 +1,12 @@
-// import {Outlet, link} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 import "../App.css"
+import Expenses from "./expenses";
 
 
-export function Header() {
+
+
+function Header() {
     return (
         <header>
             <img
@@ -18,31 +21,15 @@ export function Header() {
     );
 }
 
-const navName = {
-    Project1: "home",
-    a:"",
-
-};
-
 function NavBarLi(){
-    // return(
-    //     <li
-    //         className="navBarLiA">
-    //         <link to="src/app.js"> {navName.Project1} </link> {" "}
-    //
-    //
-    //     </li>
-    // )
-
     return(
-    <li><a
-            href={navName.a}
-            target="self"
-            className='navBarLiA'>
-            {navName.Project1}
-        </a>
-    </li>
+        <li className="navBarLiA">
+            <Link to="/" className="linkStyle" > Home </Link>
+            <Link to="Expenses" className="linkStyle" >Expenses</Link>
+
+        </li>
     )
+
 }
 
 function NavBarUl(){
@@ -55,17 +42,14 @@ function NavBarUl(){
         </div>
     )
 }
+function Nav (){
 
-export default function Nav (){
     return(
         <div>
-            {/*<Nav>*/}
-                <Header />
-                <NavBarUl />
-            {/*</Nav>*/}
-            {/*<Outlet />*/}
+            <Header />
+            <NavBarUl />
         </div>
-
-    )
-
+    );
 }
+
+export default Nav

@@ -26,7 +26,7 @@ body {
 .navBarLiA{
   list-style-type: none;
   text-decoration: none;
-  float: left;
+  float: center;
   color: white;
   text-align: center;
   padding: 10px 15px 15px 10px;
@@ -40,9 +40,10 @@ body {
 
 .expenseFlexboxInput{
   display: flex;
-  justify-content: left;
+  justify-content: space-around;
+  align-items: center;
   flex-direction: column;
-  margin: 4%;
+  margin: 3%;
   background-color: darkslategrey;
   padding: 1%;
   width: 300px;
@@ -53,6 +54,7 @@ body {
   justify-content: center;
   filter: drop-shadow(10px 5px 6px darkgray);
 }
+
 .expenseFlexboxOutput{
   display: flex;
   justify-content: center;
@@ -76,8 +78,19 @@ body {
   width: auto;
   display: flex;
   justify-content: space-around;
-  align-items: center;
+  align-items: flex-start;
   align-content: space-between;
   background-color: black;
-  margin-top: 5px;
+  margin: .5%;
+  padding: 1%;
+}
+.expenseFlexboxOutputItem{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  margin: 3%;
+  background-color: darkslategrey;
+  padding: 1%;
+  width: 200px;
 }

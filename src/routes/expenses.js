@@ -51,14 +51,24 @@ function ExpenseOutput(){
 
     return(
         <div className="flexboxContainer">
-            <div className="expenseFlexboxOutputHeader" >
-                <OutputCost />
-                <div className="expenseFlexboxInput">
-                    <span> some stuff</span>
+            <div className="expenseFlexboxInput">
+                <div className="expenseFlexboxOutputHeader" >
+                  <OutputName />
+                </div>
+                <div className="expenseFlexboxOutputItem">
+                    <span> Some Stuff</span>
+                    <span> Less Stuff</span>
                 </div>
             </div>
-            <div className="expenseFlexboxOutputHeader">
-                <h1 className="expenseTextBold" > Cost</h1>
+
+            <div className="expenseFlexboxInput">
+                <div className="expenseFlexboxOutputHeader" >
+                    <OutputCost />
+                </div>
+                <div className="expenseFlexboxOutputItem">
+                    <span> Some Stuff</span>
+                    <span>More Stuff</span>
+                </div>
             </div>
         </div>
     )
@@ -67,12 +77,23 @@ function ExpenseOutput(){
 function OutputCost (){
 
     return(
+        <div>
         <h1 className="expenseTextBold">
-            Name <br/>
+            <span>Cost </span><br/>
         </h1>
+        </div>
     )
 }
+function OutputName (){
 
+    return(
+        <div>
+            <h1 className="expenseTextBold">
+                <span>Name </span> <br/>
+            </h1>
+        </div>
+    )
+}
 
 export default function Expenses (){
 

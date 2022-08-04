@@ -1,10 +1,7 @@
+// Nav.JS
+
 import {Link} from "react-router-dom";
-
 import "../App.css"
-import Expenses from "./expenses";
-
-
-
 
 function Header() {
     return (
@@ -15,8 +12,8 @@ function Header() {
                 width={1900}
                 alt="neat logo"
             />
-            <span> <br/> Welcome to my new React Sampling!</span><br/><br/>
-            {/*<span> Welcome to the Danger Zone</span><br/>*/}
+            <span> <br/> Welcome To My React Apps </span><br/>
+            <NavBarUl />
         </header>
     );
 }
@@ -24,12 +21,11 @@ function Header() {
 function NavBarLi(){
     return(
         <li className="navBarLiA">
-            <Link to="/" className="linkStyle" > Home </Link>
-            <Link to="Expenses" className="linkStyle" >Expenses</Link>
-
+            <Link to="/" className="linkStyle" >Home |</Link>
+            <Link to="/Expenses" className="linkStyle" >Expenses |</Link>
+            <Link to="/Food" className="linkStyle" >Food |</Link>
         </li>
     )
-
 }
 
 function NavBarUl(){
@@ -47,7 +43,7 @@ function Nav (){
     return(
         <div>
             <Header />
-            <NavBarUl />
+
         </div>
     );
 }

@@ -20,10 +20,11 @@ body {
   margin: 2% ;
   flex-direction: row;
   background-color: darkslategrey;
-  padding: 3px%;
+  padding: 3px;
   overflow: hidden;
 }
 .navBarLiA{
+  list-style-type: none;
   text-decoration: none;
   float: left;
   color: white;
@@ -31,9 +32,52 @@ body {
   padding: 10px 15px 15px 10px;
   font-size: 20px;
 }
-
 .linkStyle{
   text-decoration: none;
   color: white;
   padding: 4px;
+}
+
+.expenseFlexboxInput{
+  display: flex;
+  justify-content: left;
+  flex-direction: column;
+  margin: 4%;
+  background-color: darkslategrey;
+  padding: 1%;
+  width: 300px;
+}
+
+.expenseTextBold{
+  color: black;
+  justify-content: center;
+  filter: drop-shadow(10px 5px 6px darkgray);
+}
+.expenseFlexboxOutput{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: 4%;
+  background-color: darkslategrey;
+  padding: 1%;
+
+}
+.expenseFlexboxOutputHeader{
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  flex-direction: row;
+  margin: 2%;
+  background-color: darkslategrey;
+  padding: 3%;
+}
+.flexboxContainer {
+  width: auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  align-content: space-between;
+  background-color: black;
+  margin-top: 5px;
 }

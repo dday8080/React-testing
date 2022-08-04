@@ -1,17 +1,12 @@
 
-
 import './App.css';
 import {useState} from "react";
 import FilterableP from "./FilterableP";
-import {Welcome} from "./FilterableP";
 import {Avatar} from "./FilterableP";
 import Nav from "./routes/Nav";
-import Expenses from "./routes/expenses";
-import {link} from "react-router-dom";
+
 
 let cc = console.log
-
-
 
 
 function MyButton({count, onClick}) {
@@ -35,17 +30,9 @@ function App() {
     return (
 
         <div className="App">
-
             <div>
-
-                    {/*<link to="expenses">Expenses</link> |{" "}*/}
-                    <Nav />
-                    <link path="anything" element={<Expenses />} />
-
-
-
+                <Nav />
                 <br/>
-                <Welcome />
                 <Avatar/><br/><br/>
                 <MyButton count={count} onClick={handleClick}/>
                 <FilterableP/>
@@ -53,7 +40,6 @@ function App() {
                 {/*<MyButton count={count} onClick={handleClick} />*/}
 
             </div>
-            {/*<Outlet/>*/}
         </div>
     );
 

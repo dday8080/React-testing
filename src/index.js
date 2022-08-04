@@ -6,6 +6,7 @@ import {
     Routes,
     Route,
 } from "react-router-dom";
+import Food from "./routes/Food"
 import Expenses from "./routes/expenses";
 import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -18,6 +19,7 @@ root.render(
         <Routes>
             <Route path="/" element={<App />} />
             <Route path="Expenses" element={<Expenses />} />
+            <Route path="Food" element={<Food />} />
         </Routes>
     </BrowserRouter>
 );

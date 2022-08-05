@@ -40,6 +40,10 @@ function ExpenseForm(){
                     <span>Cost of Expense</span><br/>
                     <input type="number" defaultValue="600" /><br/><br/>
                     <button>Next Inquire</button><br/>
+                    <span>
+                        Submit to compare<br/>
+                        Income to Expenses<br/>
+                    </span>
                     <button>submit</button>
                 </li>
             </form>
@@ -53,7 +57,9 @@ function ExpenseOutput(){
         <div className="flexboxContainer">
             <div className="expenseFlexboxInput">
                 <div className="expenseFlexboxOutputHeader" >
-                  <OutputName />
+                  <h1 className="expenseTextBold">
+                      <span>Name</span><br/>
+                  </h1>
                 </div>
                 <div className="expenseFlexboxOutputItem">
                     <span> Some Stuff</span>
@@ -63,7 +69,9 @@ function ExpenseOutput(){
 
             <div className="expenseFlexboxInput">
                 <div className="expenseFlexboxOutputHeader" >
-                    <OutputCost />
+                    <h1 className="expenseTextBold">
+                        <span>Cost</span>
+                    </h1>
                 </div>
                 <div className="expenseFlexboxOutputItem">
                     <span> Some Stuff</span>
@@ -74,26 +82,7 @@ function ExpenseOutput(){
     )
 }
 
-function OutputCost (){
 
-    return(
-        <div>
-        <h1 className="expenseTextBold">
-            <span>Cost </span><br/>
-        </h1>
-        </div>
-    )
-}
-function OutputName (){
-
-    return(
-        <div>
-            <h1 className="expenseTextBold">
-                <span>Name </span> <br/>
-            </h1>
-        </div>
-    )
-}
 
 export default function Expenses (){
 

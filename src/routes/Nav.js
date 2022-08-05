@@ -22,8 +22,10 @@ function NavBarLi(){
     return(
         <li className="navBarLiA">
             <Link to="/" className="linkStyle" >Home |</Link>
+            <Link to="/Income" className="linkStyle" >Income |</Link>
             <Link to="/Expenses" className="linkStyle" >Expenses |</Link>
             <Link to="/Food" className="linkStyle" >Food |</Link>
+
         </li>
     )
 }

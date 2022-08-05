@@ -6,6 +6,7 @@ import {
     Routes,
     Route,
 } from "react-router-dom";
+import Testing from "./routes/TestingStuff";
 import Income from "./routes/Income";
 import Food from "./routes/Food"
 import Expenses from "./routes/expenses";
@@ -22,6 +23,7 @@ root.render(
             <Route path="Income" element={<Income />} />
             <Route path="Expenses" element={<Expenses />} />
             <Route path="Food" element={<Food />} />
+            <Route path="Test" element={<Testing />} />
 
         </Routes>
     </BrowserRouter>

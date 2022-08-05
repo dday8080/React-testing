@@ -25,6 +25,7 @@ function NavBarLi(){
             <Link to="/Income" className="linkStyle" >Income |</Link>
             <Link to="/Expenses" className="linkStyle" >Expenses |</Link>
             <Link to="/Food" className="linkStyle" >Food |</Link>
+            <Link to="/Test" className="linkStyle" > Testing</Link>
 
         </li>
     )

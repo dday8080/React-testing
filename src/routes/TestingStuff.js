@@ -1,24 +1,15 @@
 import Nav from "./Nav";
-import {getImageUrl} from "../FilterableP";
+// import {getImageUrl} from "../FilterableP";
 
+function Item({name, isPacked}) {
 
-function Avatar ({ person, size}) {
-    let avatarSize = 's'
-    if (size > 90) {
-        avatarSize = 'b'
-    }
-
-    return(
-        <img
-            className="avatar"
-            src={getImageUrl(person, avatarSize)}
-            alt={person.name}
-            width={size}
-            height={size}
-        />
+    return (
+        <li>
+            {name} {isPacked && '✔'}
+            {/*{isPacked ? name + '✔ ' : name}*/}
+        </li>
     )
 }
-
 
 
 function Testing(){
@@ -26,22 +17,25 @@ function Testing(){
     return(
         <div className="App">
             <Nav />
-            <h2>Testing</h2>
-            <Avatar
-                person={{
-                    name: "Albert Einstein",
-                    imageId: "Zg6Vcxs"
-                }}
-                size={80}
+            <h2>Ready for space ✔</h2>
+            <Item
+                isPacked={true}
+                name="Space Suit"
             />
-            <Avatar
-                person={{
-                    name: "Albert Einstein",
-                    imageId: "Zg6Vcxs"
-                }}
-                size={160}
+            <Item
+                isPacked={false}
+                name="Space Helmet"
             />
+            <Item
+                isPacked={true}
+                name="Space Boots"
+            />
+
         </div>
     )
 }
 export default Testing
+
+
+
+

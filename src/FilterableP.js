@@ -2,6 +2,15 @@ import {useState} from "react";
 
 let cc = console.log;
 
+export function getImageUrl(person, size) {
+    return (
+        'https://i.imgur.com/' +
+        person.imageId +
+        size +
+        '.jpg'
+    );
+}
+
 
 export function Avatar() {
     const user = {

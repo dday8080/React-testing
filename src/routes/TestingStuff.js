@@ -46,6 +46,13 @@ function Family(){
         </div>
     )
 }
+function butt({onClick, children}){
+    return(
+        <button onClick={onClick}>
+            {children}
+        </button>
+    );
+}
 
 function ItemCarrier(){
     return(
@@ -75,7 +82,6 @@ function Item({name, isPacked}) {
     )
 }
 
-
 function Testing(){
 
     return(
@@ -84,8 +90,11 @@ function Testing(){
             <h2>Ready for Testing ✔</h2>
             <ItemCarrier/>
             <Family/>
-
-
+            <div>
+                <button onClick={() => alert("want to play a round of Dota before i go to bed?")}>
+                    Dota?
+                </button>
+            </div>
         </div>
     )
 }

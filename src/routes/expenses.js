@@ -1,4 +1,6 @@
 import Nav from "./Nav";
+import {useState} from "react";
+let cc = console.log
 
 function ExpenseFlexBox(){
 
@@ -30,28 +32,35 @@ function InputHeading(){
 }
 
 function ExpenseForm(){
+    const [expenseNameState, setExpenseNameState] = useState("Rent");
+    const [expenseCostState, setExpenseCostState] = useState(600);
+
 
     return(
         <div>
-            <form>
+            <form id="expenseForm">
                 <li className='navBarLiA'>
-                    <span>Name of expense</span><br/>
-                    <input type="text" defaultValue="Rent" /><br/><br/>
+                    <span>Name of Expense</span><br/>
+                    <input type="text" value={expenseNameState} id="expenseName"
+                           onChange={(e) => setExpenseNameState(e.target.value)} /><br/><br/>
                     <span>Cost of Expense</span><br/>
-                    <input type="number" defaultValue="600" /><br/><br/>
-                    <button>Next Inquire</button><br/>
-                    <span>
-                        Submit to compare<br/>
-                        Income to Expenses<br/>
-                    </span>
-                    <button>submit</button>
+                    <input type="number" value={expenseCostState} id="expenseCost"
+                    onChange={(e) => setExpenseCostState(e.target.value) } /><br/><br/>
+                    <input type="button" value='submit' id="expenseInput" onClick={(e) => {
+                        handlesOnClick(expenseNameState, expenseCostState)}} />
                 </li>
             </form>
         </div>
     )
 }
 
+function handlesOnClick(expenseNameState, costOfExpense){
+
+ExpenseNamedItem(expenseNameState)
+}
+
 function ExpenseOutput(){
+
 
     return(
         <div className="flexboxContainer">
@@ -62,8 +71,7 @@ function ExpenseOutput(){
                   </h1>
                 </div>
                 <div className="expenseFlexboxOutputItem">
-                    <span> Some Stuff</span>
-                    <span> Less Stuff</span>
+                    <ExpenseNamedItem/>
                 </div>
             </div>
 
@@ -81,7 +89,17 @@ function ExpenseOutput(){
         </div>
     )
 }
+ function ExpenseNamedItem(expenseNameState){
+let namedExpense = expenseNameState.push;
+    cc(namedExpense);
+    cc(typeof namedExpense);
+    return(
+         <li>
+             {namedExpense}
+         </li>
 
+    )
+}
 
 
 export default function Expenses (){

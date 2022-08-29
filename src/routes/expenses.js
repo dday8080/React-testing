@@ -90,7 +90,7 @@ function ExpenseOutput(){
     )
 }
  function ExpenseNamedItem(expenseNameState){
-let namedExpense = expenseNameState.push;
+let namedExpense = expenseNameState;
     cc(namedExpense);
     cc(typeof namedExpense);
     return(

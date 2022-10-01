@@ -14,7 +14,7 @@ function Expenses(){
         <h1 className="expenseTextBold">
             <span>Expenses</span><br/>
         </h1>
-    );
+    ); 
 
     let ExpenseForm = (
         <div>

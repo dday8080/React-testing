@@ -5,8 +5,10 @@ let cc = console.log
 let nextId = 0;
 
 function Expenses(){
-    const [expenseNameState, setExpenseNameState] = useState([""]);
-    const [expenseCostState, setExpenseCostState] = useState([]);
+    const [expenseNameInput, setExpenseNameInput] = useState("");
+    const [expenseCostInput, setExpenseCostInput] = useState(0);
+    const [savedExpensesByName, setSavedExpensesByName] = useState([]);
+    const [savedExpensesByCost, setSavedExpensesByCost] = useState([]);
 
     let InputHeading = (
         <h1 className="expenseTextBold">
@@ -19,24 +21,16 @@ function Expenses(){
             <form id="expenseForm">
                 <li className='navBarLiA'>
                     <span>Name of Expense</span><br/>
-                    <input type="text" value={expenseNameState} id="expenseName"
+                    <input type="text" value={expenseNameInput} id="expenseName"
                            onChange={(e) => {
-                               setExpenseNameState(e.target.value)
+                               setExpenseNameInput(e.target.value)
                            }} /><br/><br/>
                     <span>Cost of Expense</span><br/>
-                    <input type="number" value={expenseCostState} id="expenseCost"
-                           onChange={(e) => setExpenseCostState(+e.target.value) } /><br/><br/>
-                    <input type="button" value='submit' id="expenseInput"
-                           onClick={(e) => {
-                               setExpenseNameState([
-                                   ...expenseNameState,
-                                   {id: nextId++, name: expenseNameState}
-                               ]);
-                               setExpenseCostState([
-                                   ...expenseCostState,
-                                   {id: nextId++, name: expenseCostState}
-                               ]);
-                                handleStoringStates(setExpenseNameState,setExpenseCostState);}} />
+                    <input type="number" value={expenseCostInput} id="expenseCost"
+                           onChange={(e) => setExpenseCostInput(+e.target.value) } /><br/><br/>
+                    <button onClick={(e) => {
+                        handleStoringStates(expenseNameInput, expenseCostInput, setSavedExpensesByName, setSavedExpensesByCost);
+                    }}>Submit</button>
                 </li>
             </form>
         </div>
@@ -47,8 +41,8 @@ function Expenses(){
             {InputHeading}
             {ExpenseForm}
             <button onClick={(e) => {
-                cc(expenseNameState);
-                cc(typeof(expenseNameState))
+                cc(expenseNameInput);
+                cc(typeof(expenseNameInput))
             }}>Log</button>
         </div>
     );
@@ -62,7 +56,7 @@ function Expenses(){
                     </h1>
                 </div>
                 <div className="expenseFlexboxOutputItem">
-                    <ExpenseNamedItem expenseNameState={expenseNameState}/>
+                    <ExpenseNamedItem expenseNameState={expenseNameInput}/>
                 </div>
             </div>
 
@@ -73,7 +67,7 @@ function Expenses(){
                     </h1>
                 </div>
                 <div className="expenseFlexboxOutputItem">
-                    <ExpenseOfItem expenseCostState={expenseCostState}/>
+                    <ExpenseOfItem expenseCostState={expenseCostInput}/>
                     <span>More Stuff</span>
                 </div>
             </div>
@@ -112,7 +106,9 @@ function ExpenseNamedItem({expenseNameState}) {
         </div>
     )
 }
-function handleStoringStates(setExpenseNameState, setExpenseCostState){
+function handleStoringStates(expenseNameInput, expenseCostInput, setSavedExpensesByName, setSavedExpensesByCost){
+
+    cc(expenseNameInput, expenseCostInput);
 
 
     // localStorage.setItem("Name", expenseNameState);

@@ -5,8 +5,8 @@ let cc = console.log
 let nextId = 0;
 
 function Expenses(){
-    const [expenseNameState, setExpenseNameState] = useState([""]);
-    const [expenseCostState, setExpenseCostState] = useState([]);
+    const [expenseNameState, setExpenseNameState] = useState("");
+    const [expenseCostState, setExpenseCostState] = useState();
 
     let InputHeading = (
         <h1 className="expenseTextBold">
@@ -28,15 +28,15 @@ function Expenses(){
                            onChange={(e) => setExpenseCostState(+e.target.value) } /><br/><br/>
                     <input type="button" value='submit' id="expenseInput"
                            onClick={(e) => {
-                               setExpenseNameState([
-                                   ...expenseNameState,
-                                   {id: nextId++, name: expenseNameState}
-                               ]);
-                               setExpenseCostState([
-                                   ...expenseCostState,
-                                   {id: nextId++, name: expenseCostState}
-                               ]);
-                                handleStoringStates(setExpenseNameState,setExpenseCostState);}} />
+                               // setExpenseNameState([
+                               //     ...expenseNameState,
+                               //     {id: nextId++, name: expenseNameState}
+                               // ]);
+                               // setExpenseCostState([
+                               //     ...expenseCostState,
+                               //     {id: nextId++, name: expenseCostState}
+                               // ]);
+                               handleStoringStates(setExpenseNameState,setExpenseCostState);}} />
                 </li>
             </form>
         </div>
@@ -86,10 +86,10 @@ function Expenses(){
         <div className="App">
             <Nav />
             <h2 style={{color: "white"}}> Expenses </h2>
-                <div className="flexboxContainer">
-                    {expenseInputContainer}
-                    {ExpenseOutput}
-                </div>
+            <div className="flexboxContainer">
+                {expenseInputContainer}
+                {ExpenseOutput}
+            </div>
 
         </div>
     );

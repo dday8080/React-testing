@@ -29,6 +29,7 @@ function Expenses(){
                     <input type="number" value={expenseCostInput} id="expenseCost"
                            onChange={(e) => setExpenseCostInput(+e.target.value) } /><br/><br/>
                     <button onClick={(e) => {
+                        e.preventDefault();
                         handleStoringStates(expenseNameInput, expenseCostInput, setSavedExpensesByName, setSavedExpensesByCost);
                     }}>Submit</button>
                 </li>

@@ -109,6 +109,8 @@ function ExpenseNamedItem({expenseNameState}) {
 }
 function handleStoringStates(expenseNameInput, expenseCostInput, setSavedExpensesByName, setSavedExpensesByCost){
 
+    // setSavedExpensesByName = setData([expenseNameInput]);
+    // setSavedExpensesByCost = setData([expenseCostInput]);
     cc(expenseNameInput, expenseCostInput);
 
 

@@ -9,8 +9,10 @@ let cc = console.log
 // let nextId = 0;
 
 function Expenses(){
-    const [expenseNameState, setExpenseNameState] = useState(["rent"]);
-    const [expenseCostState, setExpenseCostState] = useState([600]);
+    const [expenseNameState, setExpenseNameState] = useState('');
+    const [expenseCostState, setExpenseCostState] = useState();
+    const [savedExpensesByName, setSavedExpensesByName] = useState([]);
+    const [savedExpensesByCost, setSavedExpensesByCost] = useState([]);
 
     let InputHeading = (
         <h1 className="expenseTextBold">
@@ -30,10 +32,20 @@ function Expenses(){
                     <span>Cost of Expense</span><br/>
                     <input type="number" value={expenseCostState} id="expenseCost"
                            onChange={(e) => setExpenseCostState(+e.target.value) } /><br/><br/>
-                    <input type="button" value='submit' id="expenseInput"
-                           onClick={(e) => {
-
-                               handleStoringStates(expenseNameState,expenseCostState);}} />
+                    <button onClick={(e) => {
+                        e.preventDefault();
+                            setExpenseNameState('');
+                                setSavedExpensesByName([
+                                    ...savedExpensesByName,
+                                     {name: expenseNameState}
+                                ]);
+                            setExpenseCostState();
+                                setSavedExpensesByCost([
+                                        ...savedExpensesByCost,
+                                    {cost: expenseCostState}
+                                ]);
+                        // handleStoringStates(expenseNameState, expenseCostState);
+                    }}>Submit</button>
                 </li>
             </form>
         </div>
@@ -59,7 +71,7 @@ function Expenses(){
                     </h1>
                 </div>
                 <div className="expenseFlexboxOutputItem">
-                    <ExpenseNamedItem expenseNameState={expenseNameState}/>
+                    <ExpenseNamedItem savedExpensesByName={savedExpensesByName}/>
                 </div>
             </div>
 
@@ -70,7 +82,7 @@ function Expenses(){
                     </h1>
                 </div>
                 <div className="expenseFlexboxOutputItem">
-                    <ExpenseOfItem expenseCostState={expenseCostState}/>
+                    <ExpenseOfItem savedExpensesByCost={savedExpensesByCost}/>
                     <span>More Stuff</span>
                 </div>
             </div>
@@ -81,7 +93,7 @@ function Expenses(){
 
     return (
         <div className="App">
-            <Nav />
+
             <h2 style={{color: "white"}}> Expenses </h2>
             <div className="flexboxContainer">
                 {expenseInputContainer}
@@ -91,32 +103,37 @@ function Expenses(){
         </div>
     );
 }
-function ExpenseOfItem({expenseCostState}) {
-    cc(expenseCostState);
+function ExpenseOfItem({savedExpensesByCost}) {
+    cc(savedExpensesByCost);
     return(
         <div>
-            {expenseCostState}
+            {savedExpensesByCost.map(savedExpensesByCost => (
+                <li className="expenseOutputLi" >{savedExpensesByCost.cost}</li>
+            ))}
         </div>
     )
 }
 
-function ExpenseNamedItem({expenseNameState}) {
-    cc(expenseNameState)
+function ExpenseNamedItem({savedExpensesByName}) {
+    cc(savedExpensesByName)
 
     return (
         <div>
-            {expenseNameState}
+            {savedExpensesByName.map(savedExpensesByName => (
+                <li className="expenseOutputLi" >{savedExpensesByName.name}</li>
+            ))}
         </div>
     )
 }
-function handleStoringStates(setExpenseNameState, setExpenseCostState){
-
-
-    // localStorage.setItem("Name", expenseNameState);
-    // localStorage.setItem('Cost', expenseCostState);
-    cc(localStorage.getItem("Name"));
-    cc(localStorage.getItem("Cost"));
-}
+// function handleStoringStates(setExpenseNameState, setExpenseCostState){
+//     // setExpenseNameState('');
+//     // setExpenseCostState();
+//
+//     // localStorage.setItem("Name", expenseNameState);
+//     // localStorage.setItem('Cost', expenseCostState);
+//     cc(localStorage.getItem("Name"));
+//     cc(localStorage.getItem("Cost"));
+// }
 
 
 
@@ -177,13 +194,13 @@ function Family(){
         </div>
     )
 }
-function butt({onClick, children}){
-    return(
-        <button onClick={onClick}>
-            {children}
-        </button>
-    );
-}
+// function butt({onClick, children}){
+//     return(
+//         <button onClick={onClick}>
+//             {children}
+//         </button>
+//     );
+// }
 
 function ItemCarrier(){
     return(

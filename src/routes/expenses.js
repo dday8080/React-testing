@@ -2,11 +2,12 @@ import Nav from "./Nav";
 import {useState} from "react";
 let cc = console.log
 
-let nextId = 0;
+let named = 0;
+let priced =0;
 
 function Expenses(){
     const [expenseNameInput, setExpenseNameInput] = useState("");
-    const [expenseCostInput, setExpenseCostInput] = useState(0);
+    const [expenseCostInput, setExpenseCostInput] = useState();
     const [savedExpensesByName, setSavedExpensesByName] = useState([]);
     const [savedExpensesByCost, setSavedExpensesByCost] = useState([]);
 
@@ -21,17 +22,28 @@ function Expenses(){
             <form id="expenseForm">
                 <li className='navBarLiA'>
                     <span>Name of Expense</span><br/>
-                    <input type="text" value={expenseNameInput} id="expenseName"
-                           onChange={(e) => {
-                               setExpenseNameInput(e.target.value)
-                           }} /><br/><br/>
+                    <input type="text"
+                           value={expenseNameInput} id="expenseName"
+                           onChange={(e) => {setExpenseNameInput(e.target.value)}} /><br/>
+                        <br/>
                     <span>Cost of Expense</span><br/>
-                    <input type="number" value={expenseCostInput} id="expenseCost"
-                           onChange={(e) => setExpenseCostInput(+e.target.value) } /><br/><br/>
+                    <input type="number"
+                           value={expenseCostInput} id="expenseCost"
+                           onChange={(e) => {setExpenseCostInput(+e.target.value)}} /><br/>
+                        <br/>
                     <button onClick={(e) => {
                         e.preventDefault();
-                        handleStoringStates(expenseNameInput, expenseCostInput, setSavedExpensesByName, setSavedExpensesByCost);
-                    }}>Submit</button>
+                            setExpenseNameInput('');
+                                setSavedExpensesByName([
+                                    ...savedExpensesByName,
+                                    { id: named++, name: expenseNameInput}
+                                ]);
+                            setExpenseCostInput();
+                                setSavedExpensesByCost([
+                                    ...savedExpensesByCost,
+                                    { id: priced++, cost: +expenseCostInput}
+                           ]);
+                        }}>Submit</button>
                 </li>
             </form>
         </div>
@@ -57,7 +69,7 @@ function Expenses(){
                     </h1>
                 </div>
                 <div className="expenseFlexboxOutputItem">
-                    <ExpenseNamedItem expenseNameState={expenseNameInput}/>
+                    <ExpenseNamedItem savedExpensesByName={savedExpensesByName}/>
                 </div>
             </div>
 
@@ -68,12 +80,29 @@ function Expenses(){
                     </h1>
                 </div>
                 <div className="expenseFlexboxOutputItem">
-                    <ExpenseOfItem expenseCostState={expenseCostInput}/>
-                    <span>More Stuff</span>
+                    <ExpenseOfItem savedExpensesByCost={savedExpensesByCost}/>
                 </div>
             </div>
         </div>
     );
+    // function handleStoringStates(expenseNameInput, expenseCostInput, setSavedExpensesByName, setSavedExpensesByCost, savedExpensesByName, savedExpensesByCost){
+    //    return(
+    //     setExpenseNameInput('')
+    //         setSavedExpensesByName([
+    //         ...savedExpensesByName,
+    //             {name: expenseNameInput}
+    //     ])
+    //
+    //     )
+    //
+    //     cc(expenseNameInput, expenseCostInput);
+    //
+    //
+    //     // localStorage.setItem("Name", expenseNameState);
+    //     // localStorage.setItem('Cost', expenseCostState);
+    //     // cc(localStorage.getItem("Name"));
+    //     // cc(localStorage.getItem("Cost"));
+    // }
 
 
 
@@ -89,36 +118,43 @@ function Expenses(){
         </div>
     );
 }
-function ExpenseOfItem({expenseCostState}) {
-    cc(expenseCostState);
+function ExpenseOfItem({savedExpensesByCost}) {
+    cc(savedExpensesByCost);
     return(
         <div>
-            {expenseCostState}
+            {savedExpensesByCost.map(savedExpensesByCost => (
+                <li className="expenseOutputLi" key={priced.id}> {savedExpensesByCost.cost}</li>
+            ))}
         </div>
     )
 }
 
-function ExpenseNamedItem({expenseNameState}) {
-    cc(expenseNameState)
+function ExpenseNamedItem({savedExpensesByName}) {
+    cc(savedExpensesByName)
 
     return (
         <div>
-            {expenseNameState}
+            {savedExpensesByName.map(savedExpensesByName => (
+                <li className='expenseOutputLi' key={named.id}> {savedExpensesByName.name}</li>
+            ))}
         </div>
     )
 }
-function handleStoringStates(expenseNameInput, expenseCostInput, setSavedExpensesByName, setSavedExpensesByCost){
-
-    // setSavedExpensesByName = setData([expenseNameInput]);
-    // setSavedExpensesByCost = setData([expenseCostInput]);
-    cc(expenseNameInput, expenseCostInput);
-
-
-    // localStorage.setItem("Name", expenseNameState);
-    // localStorage.setItem('Cost', expenseCostState);
-    // cc(localStorage.getItem("Name"));
-    // cc(localStorage.getItem("Cost"));
-}
+// function handleStoringStates(expenseNameInput, expenseCostInput, setSavedExpensesByName, setSavedExpensesByCost){
+//     expenseNameInput('')
+//         setSavedExpensesByName([
+//             ...savedExpensesByName,
+//             {name: expenseNamestate}
+//         ]);
+//
+//     cc(expenseNameInput, expenseCostInput);
+//
+//
+//     // localStorage.setItem("Name", expenseNameState);
+//     // localStorage.setItem('Cost', expenseCostState);
+//     // cc(localStorage.getItem("Name"));
+//     // cc(localStorage.getItem("Cost"));
+// }
 
 
 

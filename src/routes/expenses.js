@@ -130,13 +130,13 @@ function ExpenseOfItem({savedExpensesByCost}) {
 }
 
 function ExpenseNamedItem({savedExpensesByName}) {
-    cc(savedExpensesByName)
+    let expensesByName = savedExpensesByName.map((entry, key) => {
+        <li className='expenseOutputLi' key={key}> {entry.name}</li> /*alternatively, use key={entry.id} */
+    });
 
     return (
         <div>
-            {savedExpensesByName.map(savedExpensesByName => (
-                <li className='expenseOutputLi' key={named.id}> {savedExpensesByName.name}</li>
-            ))}
+            {expensesByName}
         </div>
     )
 }

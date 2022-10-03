@@ -130,8 +130,11 @@ function ExpenseOfItem({savedExpensesByCost}) {
 }
 
 function ExpenseNamedItem({savedExpensesByName}) {
+
     let expensesByName = savedExpensesByName.map((entry, key) => {
-        <li className='expenseOutputLi' key={key}> {entry.name}</li> /*alternatively, use key={entry.id} */
+        return (
+            <li className='expenseOutputLi' key={key}> {entry.name}</li> /*alternatively, use key={entry.id} */
+        );
     });
 
     return (

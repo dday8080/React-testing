@@ -9,7 +9,7 @@ function Expenses(){
     const [expenseNameInput, setExpenseNameInput] = useState("");
     const [expenseCostInput, setExpenseCostInput] = useState('');
     const [savedExpensesByName, setSavedExpensesByName] = useState(['']);
-    const [savedExpensesByCost, setSavedExpensesByCost] = useState(['']);
+    const [savedExpensesByCost, setSavedExpensesByCost] = useState([]);
     const [totalExpensesByCost, setTotalExpensesByCost] = useState(['']);
 
     let InputHeading = (
@@ -115,6 +115,10 @@ function Expenses(){
 }
 function ExpenseOfItem({savedExpensesByCost, expenseCostInput}) {
 
+    if (savedExpensesByCost.length === undefined) return;
+
+    //if (savedExpensesByCost.length)
+
     let expenseByCost = savedExpensesByCost.map((entry, key) => {
         return (
             <li className="expenseOutputLi" key={key}> {entry.cost}</li>
@@ -148,22 +152,23 @@ function ExpensesAdded({savedExpensesByCost}){
     let runningTotal = 0;
 
     for (let i = 0; i < savedExpensesByCost.length; i++) {
+        cc(savedExpensesByCost[i].cost)
         runningTotal += savedExpensesByCost[i].cost;
         totals.push(runningTotal);
     }
 
     totals.map((value, key) => {
-            return (
-                <li className='expenseOutputLi' key={key}>
-                    {value}
-                </li>
-            )
-        }
+        return (
+            <li className='expenseOutputLi' key={key}>
+                hello
+            </li>
+        )}
     );
+
 
     return(
         <div>
-            { totals }
+            {totals}
         </div>
     )
 }

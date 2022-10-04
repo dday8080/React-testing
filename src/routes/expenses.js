@@ -158,12 +158,11 @@ function ExpensesAdded({savedExpensesByCost}){
     }
 
     totals.map((value, key) => {
-            return (
-                <li className='expenseOutputLi' key={key}>
-                    hello
-                </li>
-            )
-        }
+        return (
+            <li className='expenseOutputLi' key={key}>
+                hello
+            </li>
+        )}
     );
 
 

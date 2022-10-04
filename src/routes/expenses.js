@@ -7,9 +7,9 @@ let priced =0;
 
 function Expenses(){
     const [expenseNameInput, setExpenseNameInput] = useState("");
-    const [expenseCostInput, setExpenseCostInput] = useState();
-    const [savedExpensesByName, setSavedExpensesByName] = useState([]);
-    const [savedExpensesByCost, setSavedExpensesByCost] = useState([]);
+    const [expenseCostInput, setExpenseCostInput] = useState('');
+    const [savedExpensesByName, setSavedExpensesByName] = useState(['']);
+    const [savedExpensesByCost, setSavedExpensesByCost] = useState(['']);
 
     let InputHeading = (
         <h1 className="expenseTextBold">
@@ -38,7 +38,7 @@ function Expenses(){
                                     ...savedExpensesByName,
                                     { id: named++, name: expenseNameInput}
                                 ]);
-                            setExpenseCostInput();
+                            setExpenseCostInput('');
                                 setSavedExpensesByCost([
                                     ...savedExpensesByCost,
                                     { id: priced++, cost: +expenseCostInput}
@@ -85,24 +85,12 @@ function Expenses(){
             </div>
         </div>
     );
-    // function handleStoringStates(expenseNameInput, expenseCostInput, setSavedExpensesByName, setSavedExpensesByCost, savedExpensesByName, savedExpensesByCost){
-    //    return(
-    //     setExpenseNameInput('')
-    //         setSavedExpensesByName([
-    //         ...savedExpensesByName,
-    //             {name: expenseNameInput}
-    //     ])
-    //
-    //     )
-    //
-    //     cc(expenseNameInput, expenseCostInput);
-    //
-    //
-    //     // localStorage.setItem("Name", expenseNameState);
-    //     // localStorage.setItem('Cost', expenseCostState);
-    //     // cc(localStorage.getItem("Name"));
-    //     // cc(localStorage.getItem("Cost"));
-    // }
+
+    // localStorage.setItem("Name", expenseNameState);
+    // localStorage.setItem('Cost', expenseCostState);
+    // cc(localStorage.getItem("Name"));
+    // cc(localStorage.getItem("Cost"));
+
 
 
 
@@ -119,12 +107,15 @@ function Expenses(){
     );
 }
 function ExpenseOfItem({savedExpensesByCost}) {
-    cc(savedExpensesByCost);
+
+    let expenseByCost = savedExpensesByCost.map((entry, key) => {
+        return (
+            <li className="expenseOutputLi" key={key}> {entry.cost}</li>
+        );
+    });
     return(
         <div>
-            {savedExpensesByCost.map(savedExpensesByCost => (
-                <li className="expenseOutputLi" key={priced.id}> {savedExpensesByCost.cost}</li>
-            ))}
+            {expenseByCost}
         </div>
     )
 }

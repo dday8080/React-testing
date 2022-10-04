@@ -148,24 +148,24 @@ function ExpensesAdded({savedExpensesByCost}){
 
 
     let totalExpenses = () => {
-      cc(savedExpensesByCost);
+         cc(savedExpensesByCost);
 
          savedExpensesByCost.map((value, key) => {
-            let total;
-             cc(value);
-            for (let i = value.cost; i < value.length; i++){
+             let total;
+                cc(value);
+             for (let i = value.cost; i < value.length; i++){
                 total += value[i]
                 ;
 
             }
-        return  (
-            <li className='expenseOutputLi' key={key}>
-            {savedExpensesByCost.reduce((total, value) => total + value, 0)} </li>
-        )})
+            return  (
+                <li className='expenseOutputLi' key={key}>
+                {savedExpensesByCost.reduce((total, value) => total + value, 0)} </li>
+            )})
     }
     return(
         <div>
-            {totalExpenses() }
+            {totalExpenses()}
         </div>
     )}
 

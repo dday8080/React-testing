@@ -115,7 +115,7 @@ function Expenses(){
 }
 function ExpenseOfItem({savedExpensesByCost, expenseCostInput}) {
 
-    if (savedExpensesByCost.length === undefined) return;
+
 
     //if (savedExpensesByCost.length)
 
@@ -148,27 +148,28 @@ function ExpenseNamedItem({savedExpensesByName, expenseNameInput}) {
     )
 }
 function ExpensesAdded({savedExpensesByCost}){
-    let totals = [];
+
     let runningTotal = 0;
 
     for (let i = 0; i < savedExpensesByCost.length; i++) {
-        cc(savedExpensesByCost[i].cost)
         runningTotal += savedExpensesByCost[i].cost;
-        totals.push(runningTotal);
     }
+    for (let entry in savedExpensesByCost) cc(entry);
 
-    totals.map((value, key) => {
-        return (
-            <li className='expenseOutputLi' key={key}>
-                hello
-            </li>
-        )}
-    );
-
+   //  function ExpensesAdded({savedExpensesByCost}){
+   //      let runningTotal = 0;
+   //      for (let entry of savedExpensesByCost) runningTotal += +entry.cost;
+   //
+   //      return(
+   //          <div>
+   //              {runningTotal}
+   //          </div>
+   //      )
+   //  }
 
     return(
         <div>
-            {totals}
+            {runningTotal}
         </div>
     )
 }

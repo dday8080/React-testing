@@ -2,14 +2,15 @@ import Nav from "./Nav";
 import {useState} from "react";
 let cc = console.log
 
-let named = 0;
-let priced =0;
-
+let named  = 0;
+let priced = 0;
+let gTotal = 0;
 function Expenses(){
     const [expenseNameInput, setExpenseNameInput] = useState("");
     const [expenseCostInput, setExpenseCostInput] = useState('');
     const [savedExpensesByName, setSavedExpensesByName] = useState(['']);
     const [savedExpensesByCost, setSavedExpensesByCost] = useState(['']);
+    const [totalExpensesByCost, setTotalExpensesByCost] = useState(['']);
 
     let InputHeading = (
         <h1 className="expenseTextBold">
@@ -43,6 +44,11 @@ function Expenses(){
                                     ...savedExpensesByCost,
                                     { id: priced++, cost: +expenseCostInput}
                            ]);
+                                //
+                                // setTotalExpensesByCost([
+                                //         ...totalExpensesByCost,
+                                //     { id: gTotal++, expense: +expenseCostInput }
+                                // ])
                         }}>Submit</button>
                 </li>
             </form>
@@ -69,7 +75,7 @@ function Expenses(){
                     </h1>
                 </div>
                 <div className="expenseFlexboxOutputItem">
-                    <ExpenseNamedItem savedExpensesByName={savedExpensesByName}/>
+                    <ExpenseNamedItem expenseNameInput={expenseNameInput} savedExpensesByName={savedExpensesByName}/>
                 </div>
             </div>
 
@@ -80,7 +86,8 @@ function Expenses(){
                     </h1>
                 </div>
                 <div className="expenseFlexboxOutputItem">
-                    <ExpenseOfItem savedExpensesByCost={savedExpensesByCost}/>
+                    <ExpenseOfItem expenseCostInput={expenseCostInput} savedExpensesByCost={savedExpensesByCost}/>
+                    {<span>Total Expenses <ExpensesAdded savedExpensesByCost={savedExpensesByCost}/>  <br/></span>}
                 </div>
             </div>
         </div>
@@ -106,7 +113,7 @@ function Expenses(){
         </div>
     );
 }
-function ExpenseOfItem({savedExpensesByCost}) {
+function ExpenseOfItem({savedExpensesByCost, expenseCostInput}) {
 
     let expenseByCost = savedExpensesByCost.map((entry, key) => {
         return (
@@ -115,12 +122,13 @@ function ExpenseOfItem({savedExpensesByCost}) {
     });
     return(
         <div>
+            {expenseCostInput}
             {expenseByCost}
         </div>
     )
 }
 
-function ExpenseNamedItem({savedExpensesByName}) {
+function ExpenseNamedItem({savedExpensesByName, expenseNameInput}) {
 
     let expensesByName = savedExpensesByName.map((entry, key) => {
         return (
@@ -130,10 +138,40 @@ function ExpenseNamedItem({savedExpensesByName}) {
 
     return (
         <div>
+            {expenseNameInput}
             {expensesByName}
         </div>
     )
 }
+function ExpensesAdded({savedExpensesByCost}){
+    cc(savedExpensesByCost);
+
+
+    let totalExpenses = () => {
+      cc(savedExpensesByCost);
+
+         savedExpensesByCost.map((value, key) => {
+            let total;
+             cc(value);
+            for (let i = value.cost; i < value.length; i++){
+                total += value[i]
+                ;
+
+            }
+        return  (
+            <li className='expenseOutputLi' key={key}>
+            {savedExpensesByCost.reduce((total, value) => total + value, 0)} </li>
+        )})
+    }
+    return(
+        <div>
+            {totalExpenses() }
+        </div>
+    )}
+
+
+
+
 // function handleStoringStates(expenseNameInput, expenseCostInput, setSavedExpensesByName, setSavedExpensesByCost){
 //     expenseNameInput('')
 //         setSavedExpensesByName([

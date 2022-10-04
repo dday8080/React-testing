@@ -155,7 +155,7 @@ function ExpensesAdded({savedExpensesByCost}){
         runningTotal += savedExpensesByCost[i].cost;
     }
     for (let entry in savedExpensesByCost) cc(entry);
-
+    for (let entry in savedExpensesByCost[0]) cc(entry);
    //  function ExpensesAdded({savedExpensesByCost}){
    //      let runningTotal = 0;
    //      for (let entry of savedExpensesByCost) runningTotal += +entry.cost;
@@ -166,7 +166,7 @@ function ExpensesAdded({savedExpensesByCost}){
    //          </div>
    //      )
    //  }
-
+    cc(savedExpensesByCost)
     return(
         <div>
             {runningTotal}

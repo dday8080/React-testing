@@ -4,12 +4,12 @@ let cc = console.log
 
 let named  = 0;
 let priced = 0;
-let gTotal = 0;
+
 
 function Expenses(){
     const [expenseNameInput, setExpenseNameInput] = useState("");
     const [expenseCostInput, setExpenseCostInput] = useState('');
-    const [savedExpensesByName, setSavedExpensesByName] = useState(['']);
+    const [savedExpensesByName, setSavedExpensesByName] = useState([]);
     const [savedExpensesByCost, setSavedExpensesByCost] = useState([]);
 
     let InputHeading = (
@@ -34,31 +34,52 @@ function Expenses(){
                         <br/>
                     <button onClick={(e) => {
                         e.preventDefault();
-                            setExpenseNameInput('');
-                                setSavedExpensesByName([
-                                    ...savedExpensesByName,
-                                    { id: named++, name: expenseNameInput}
-                                ]);
-                            setExpenseCostInput('');
-                                setSavedExpensesByCost([
-                                    ...savedExpensesByCost,
-                                    { id: priced++, cost: +expenseCostInput}
-                           ]);
-
-                        }}>Submit</button>
+                        handleSubmitExpense();
+                    }}>Submit
+                    </button>
                 </li>
             </form>
         </div>
     );
+
+    function handleSubmitExpense(){
+        setExpenseNameInput('');
+        setSavedExpensesByName([
+            ...savedExpensesByName,
+            { id: named++, name: expenseNameInput}
+        ]);
+        setExpenseCostInput('');
+        setSavedExpensesByCost([
+            ...savedExpensesByCost,
+            { id: priced++, cost: +expenseCostInput}
+        ]);
+    }
+
+    function handleStoringStates(){
+        localStorage.setItem("Name", setSavedExpensesByName);
+        localStorage.setItem('Cost', setSavedExpensesByCost);
+      //  let restoreNames = localStorage.getItem("Name");
+      //  let restoreCost = localStorage.getItem("Cost");
+        cc(localStorage.getItem(setSavedExpensesByCost));
+    }
+
+    function restoreData(){
+        setSavedExpensesByName = localStorage.getItem('Name');
+        setSavedExpensesByCost = localStorage.getItem('Cost');
+    }
 
     let expenseInputContainer = (
         <div className="expenseFlexboxInput">
             {InputHeading}
             {ExpenseForm}
             <button onClick={(e) => {
+                handleStoringStates();
                 cc(expenseNameInput);
                 cc(typeof(expenseNameInput))
-            }}>Log</button>
+            }}>Save Entries</button><br/>
+            <button onClick={(e) => {
+                restoreData();
+            }}>Load Saved </button>
         </div>
     );
 
@@ -88,6 +109,9 @@ function Expenses(){
             </div>
         </div>
     );
+
+
+
     return (
         <div className="App">
             <Nav />
@@ -148,6 +172,8 @@ function ExpensesAdded({savedExpensesByCost}){
     )
 }
 
+
+
 // function ExpensesAdded({savedExpensesByCost}){
 //     cc(savedExpensesByCost);
 //
@@ -194,21 +220,7 @@ function ExpensesAdded({savedExpensesByCost}){
 // cc(localStorage.getItem("Cost"));
 
 
-// function handleStoringStates(expenseNameInput, expenseCostInput, setSavedExpensesByName, setSavedExpensesByCost){
-//     expenseNameInput('')
-//         setSavedExpensesByName([
-//             ...savedExpensesByName,
-//             {name: expenseNamestate}
-//         ]);
-//
-//     cc(expenseNameInput, expenseCostInput);
-//
-//
-//     // localStorage.setItem("Name", expenseNameState);
-//     // localStorage.setItem('Cost', expenseCostState);
-//     // cc(localStorage.getItem("Name"));
-//     // cc(localStorage.getItem("Cost"));
-// }
+
 
 
 

@@ -5,12 +5,12 @@ let cc = console.log
 let named  = 0;
 let priced = 0;
 let gTotal = 0;
+
 function Expenses(){
     const [expenseNameInput, setExpenseNameInput] = useState("");
     const [expenseCostInput, setExpenseCostInput] = useState('');
     const [savedExpensesByName, setSavedExpensesByName] = useState(['']);
     const [savedExpensesByCost, setSavedExpensesByCost] = useState([]);
-    const [totalExpensesByCost, setTotalExpensesByCost] = useState(['']);
 
     let InputHeading = (
         <h1 className="expenseTextBold">
@@ -44,11 +44,7 @@ function Expenses(){
                                     ...savedExpensesByCost,
                                     { id: priced++, cost: +expenseCostInput}
                            ]);
-                                //
-                                // setTotalExpensesByCost([
-                                //         ...totalExpensesByCost,
-                                //     { id: gTotal++, expense: +expenseCostInput }
-                                // ])
+
                         }}>Submit</button>
                 </li>
             </form>
@@ -92,15 +88,6 @@ function Expenses(){
             </div>
         </div>
     );
-
-    // localStorage.setItem("Name", expenseNameState);
-    // localStorage.setItem('Cost', expenseCostState);
-    // cc(localStorage.getItem("Name"));
-    // cc(localStorage.getItem("Cost"));
-
-
-
-
     return (
         <div className="App">
             <Nav />
@@ -113,11 +100,8 @@ function Expenses(){
         </div>
     );
 }
+
 function ExpenseOfItem({savedExpensesByCost, expenseCostInput}) {
-
-
-
-    //if (savedExpensesByCost.length)
 
     let expenseByCost = savedExpensesByCost.map((entry, key) => {
         return (
@@ -147,6 +131,8 @@ function ExpenseNamedItem({savedExpensesByName, expenseNameInput}) {
         </div>
     )
 }
+
+
 function ExpensesAdded({savedExpensesByCost}){
 
     let runningTotal = 0;
@@ -154,9 +140,43 @@ function ExpensesAdded({savedExpensesByCost}){
     for (let i = 0; i < savedExpensesByCost.length; i++) {
         runningTotal += savedExpensesByCost[i].cost;
     }
-    for (let entry in savedExpensesByCost) cc(entry);
-    for (let entry in savedExpensesByCost[0]) cc(entry);
-   //  function ExpensesAdded({savedExpensesByCost}){
+    cc(savedExpensesByCost)
+    return(
+        <div>
+            {runningTotal}
+        </div>
+    )
+}
+
+// function ExpensesAdded({savedExpensesByCost}){
+//     cc(savedExpensesByCost);
+//
+//
+//     let totalExpenses = () => {
+//         cc(savedExpensesByCost);
+//
+//         savedExpensesByCost.map((value, key) => {
+//             let total;
+//             cc(value);
+//             for (let i = value.cost; i < value.length; i++){
+//                 total += value[i]
+//                 ;
+//
+//             }
+//             return  (
+//                 <li className='expenseOutputLi' key={key}>
+//                     {savedExpensesByCost.reduce((total, value) => total + value, 0)} </li>
+//             )})
+//     }
+//     return(
+//         <div>
+//             {totalExpenses()}
+//         </div>
+//     )}
+    // for (let entry in savedExpensesByCost) cc(entry);
+    // for (let entry in savedExpensesByCost[0]) cc(entry);
+
+    //  function ExpensesAdded({savedExpensesByCost}){
    //      let runningTotal = 0;
    //      for (let entry of savedExpensesByCost) runningTotal += +entry.cost;
    //
@@ -166,15 +186,12 @@ function ExpensesAdded({savedExpensesByCost}){
    //          </div>
    //      )
    //  }
-    cc(savedExpensesByCost)
-    return(
-        <div>
-            {runningTotal}
-        </div>
-    )
-}
 
 
+// localStorage.setItem("Name", expenseNameState);
+// localStorage.setItem('Cost', expenseCostState);
+// cc(localStorage.getItem("Name"));
+// cc(localStorage.getItem("Cost"));
 
 
 // function handleStoringStates(expenseNameInput, expenseCostInput, setSavedExpensesByName, setSavedExpensesByCost){

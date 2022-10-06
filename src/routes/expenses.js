@@ -1,5 +1,5 @@
 import Nav from "./Nav";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 let cc = console.log
 
 let named  = 0;
@@ -11,6 +11,14 @@ function Expenses(){
     const [expenseCostInput, setExpenseCostInput] = useState('');
     const [savedExpensesByName, setSavedExpensesByName] = useState([]);
     const [savedExpensesByCost, setSavedExpensesByCost] = useState([]);
+
+    useEffect(() => {
+        localStorage.setItem("savedExpensesByName", JSON.stringify(savedExpensesByName));
+    }, [savedExpensesByName]);
+    useEffect(() => {
+        localStorage.setItem('savedExpensesByCost', JSON.stringify(savedExpensesByCost));
+    }, [savedExpensesByCost]);
+    cc(localStorage.getItem(SavedExpensesByCost));
 
     let InputHeading = (
         <h1 className="expenseTextBold">
@@ -55,13 +63,16 @@ function Expenses(){
         ]);
     }
 
-    function handleStoringStates(){
-        localStorage.setItem("Name", setSavedExpensesByName);
-        localStorage.setItem('Cost', setSavedExpensesByCost);
-      //  let restoreNames = localStorage.getItem("Name");
-      //  let restoreCost = localStorage.getItem("Cost");
+    // function handleStoringStates() {
+        useEffect(() => {
+            localStorage.setItem("savedExpensesByName", JSON.stringify(savedExpensesByName));
+        }, [savedExpensesByName]);
+        useEffect(() => {
+            localStorage.setItem('savedExpensesByCost', JSON.stringify(savedExpensesByCost));
+        }, [savedExpensesByCost]);
         cc(localStorage.getItem(setSavedExpensesByCost));
-    }
+
+    // }
 
     function restoreData(){
         setSavedExpensesByName = localStorage.getItem('Name');
@@ -73,7 +84,7 @@ function Expenses(){
             {InputHeading}
             {ExpenseForm}
             <button onClick={(e) => {
-                handleStoringStates();
+                // handleStoringStates();
                 cc(expenseNameInput);
                 cc(typeof(expenseNameInput))
             }}>Save Entries</button><br/>

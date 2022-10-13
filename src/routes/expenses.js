@@ -19,6 +19,18 @@ function Expenses(){
         localStorage.setItem('savedExpensesByCost', JSON.stringify(savedExpensesByCost));
     }, [savedExpensesByCost]);
 
+    useEffect(() => {
+        const savedExpensesByName = JSON.parse(localStorage.getItem('savedExpensesByName'));
+        if (savedExpensesByName) {
+            setSavedExpensesByName(savedExpensesByName);
+        }
+    },[]);
+    useEffect(() => {
+        const savedExpensesByCost = JSON.parse(localStorage.getItem('savedExpensesByCost'));
+        if (savedExpensesByCost) {
+            setSavedExpensesByCost(savedExpensesByCost);
+        }
+    },[]);
 
     let InputHeading = (
         <h1 className="expenseTextBold">
@@ -61,7 +73,9 @@ function Expenses(){
             ...savedExpensesByCost,
             { id: priced++, cost: +expenseCostInput}
         ]);
+
     }
+
 
     // function handleStoringStates() {
     //     useEffect(() => {
@@ -74,19 +88,19 @@ function Expenses(){
 
     // }
 
-    function restoreData(){
-        setSavedExpensesByName = localStorage.getItem('Name');
-        setSavedExpensesByCost = localStorage.getItem('Cost');
-    }
+    // function restoreData(){
+    //     setSavedExpensesByName = localStorage.getItem('Name');
+    //     setSavedExpensesByCost = localStorage.getItem('Cost');
+    // }
 
     let expenseInputContainer = (
         <div className="expenseFlexboxInput">
             {InputHeading}
             {ExpenseForm}
 
-            <button onClick={(e) => {
-                restoreData();
-            }}>Load Saved </button>
+            {/*<button onClick={(e) => {*/}
+            {/*    restoreData();*/}
+            {/*}}>Load Saved </button>*/}
         </div>
     );
 
@@ -171,7 +185,7 @@ function ExpensesAdded({savedExpensesByCost}){
     for (let i = 0; i < savedExpensesByCost.length; i++) {
         runningTotal += savedExpensesByCost[i].cost;
     }
-    cc(savedExpensesByCost)
+
     return(
         <div>
             {runningTotal}
